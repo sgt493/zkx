@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 基础练习</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        .section {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .section h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+        .output {
+            background: #1e1e1e;
+            color: #0f0;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Consolas', monospace;
+            min-height: 50px;
+            margin-top: 10px;
+            white-space: pre-wrap;
+        }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-right: 10px;
+            margin-top: 10px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        .input-group {
+            margin: 10px 0;
+        }
+        input {
+            padding: 8px 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            width: 200px;
+        }
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        .info {
+            background: #f0f4ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            line-height: 1.8;
+        }
+        .info code {
+            background: #e0e8ff;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 JavaScript 基础练习</h1>
+
+        <!-- 一、变量定义 -->
+        <div class="section">
+            <h2>一、变量定义</h2>
+            <div class="info">
+                <code>var</code> - 函数作用域，可重复声明<br>
+                <code>let</code> - 块级作用域，不能重复声明<br>
+                <code>const</code> - 常量，声明时必须赋值，不能重新赋值
+            </div>
+            <button onclick="testVariables()">运行变量练习</button>
+            <div class="output" id="varOutput"></div>
+        </div>
+
+        <!-- 二、变量类型 -->
+        <div class="section">
+            <h2>二、变量类型</h2>
+            <div class="info">
+                <code>typeof</code> - 检测数据类型<br>
+                基本类型：string, number, boolean, null, undefined, symbol, bigint<br>
+                引用类型：object, array, function
+            </div>
+            <button onclick="testTypes()">运行类型检测</button>
+            <div class="output" id="typeOutput"></div>
+        </div>
+
+        <!-- 三、表达式 -->
+        <div class="section">
+            <h2>三、表达式</h2>
+            <div class="info">
+                算术表达式：<code>+ - * / % **</code><br>
+                比较表达式：<code>== === != !== > < >= <=</code><br>
+                逻辑表达式：<code>&& || !</code><br>
+                赋值表达式：<code>= += -= *= /= %=</code>
+            </div>
+            <button onclick="testExpressions()">运行表达式练习</button>
+            <div class="output" id="exprOutput"></div>
+        </div>
+
+        <!-- 四、流程控制 -->
+        <div class="section">
+            <h2>四、流程控制</h2>
+            <div class="input-group">
+                <label>输入成绩：</label>
+                <input type="number" id="scoreInput" placeholder="0-100">
+                <button onclick="testIfElse()">if-else 判断</button>
+            </div>
+            <div class="input-group">
+                <label>星期几：</label>
+                <input type="number" id="dayInput" placeholder="1-7">
+                <button onclick="testSwitch()">switch-case</button>
+            </div>
+            <div class="input-group">
+                <label>求和范围：</label>
+                <input type="number" id="nInput" placeholder="输入数字" value="5">
+                <button onclick="testLoop()">循环求和 1+2+...+n</button>
+            </div>
+            <div class="output" id="flowOutput"></div>
+        </div>
+
+        <!-- 五、函数 -->
+        <div class="section">
+            <h2>五、函数</h2>
+            <div class="info">
+                <strong>函数声明：</strong> <code>function name() {}</code><br>
+                <strong>函数表达式：</strong> <code>const name = function() {}</code><br>
+                <strong>箭头函数：</strong> <code>const name = () => {}</code><br>
+                <strong>参数默认值：</strong> <code>function(a = 10) {}</code>
+            </div>
+            <button onclick="testFunctions()">运行函数练习</button>
+            <div class="output" id="funcOutput"></div>
+        </div>
+    </div>
+
+    <script>
+        // ========== 一、变量定义 ==========
+        function testVariables() {
+            let output = [];
+
+            // var 特点：函数作用域，可重复声明
+            var name1 = "张三";
+            var name1 = "李四"; // var 可以重复声明
+            output.push("var 重复声明: " + name1);
+
+            // let 特点：块级作用域，不能重复声明
+            let age = 25;
+            // let age = 30; // 报错！let 不能重复声明
+            age = 30; // 但可以重新赋值
+            output.push("let 重新赋值: age = " + age);
+
+            // const 特点：常量，必须初始化，不能重新赋值
+            const PI = 3.14159;
+            output.push("const 常量: PI = " + PI);
+
+            // const 用于对象和数组
+            const person = { name: "王五", city: "北京" };
+            person.name = "赵六"; // 可以修改对象属性
+            output.push("const 对象: " + JSON.stringify(person));
+
+            const fruits = ["苹果", "香蕉"];
+            fruits.push("橙子"); // 可以修改数组
+            output.push("const 数组: " + fruits.join(", "));
+
+            document.getElementById("varOutput").textContent = output.join("\n");
+        }
+
+        // ========== 二、变量类型 ==========
+        function testTypes() {
+            let output = [];
+
+            // 基本类型
+            output.push("字符串: " + typeof "Hello");
+            output.push("数字: " + typeof 123);
+            output.push("小数: " + typeof 3.14);
+            output.push("布尔: " + typeof true);
+            output.push("undefined: " + typeof undefined);
+            output.push("null: " + typeof null); // 注意：null 被 typeof 检测为 object
+            output.push("Symbol: " + typeof Symbol("id"));
+            output.push("BigInt: " + typeof 100n);
+
+            // 引用类型
+            output.push("数组: " + typeof [1, 2, 3]); // 数组被 typeof 检测为 object
+            output.push("对象: " + typeof { a: 1 });
+            output.push("函数: " + typeof function() {});
+
+            // 类型转换
+            output.push("\n--- 类型转换 ---");
+            output.push("String(123): " + String(123));
+            output.push("Number('456'): " + Number("456"));
+            output.push("Boolean(0): " + Boolean(0));
+            output.push("Boolean(''): " + Boolean(""));
+            output.push("parseInt('3.14'): " + parseInt("3.14"));
+            output.push("parseFloat('3.14'): " + parseFloat("3.14"));
+
+            document.getElementById("typeOutput").textContent = output.join("\n");
+        }
+
+        // ========== 三、表达式 ==========
+        function testExpressions() {
+            let output = [];
+
+            // 算术表达式
+            output.push("--- 算术表达式 ---");
+            output.push("10 + 5 = " + (10 + 5));
+            output.push("10 - 5 = " + (10 - 5));
+            output.push("10 * 5 = " + (10 * 5));
+            output.push("10 / 3 = " + (10 / 3).toFixed(4));
+            output.push("10 % 3 = " + (10 % 3));
+            output.push("2 ** 3 = " + (2 ** 3));
+
+            // 比较表达式
+            output.push("\n--- 比较表达式 ---");
+            output.push("5 == '5': " + (5 == '5') + " (松散相等，只比较值)");
+            output.push("5 === '5': " + (5 === '5') + " (严格相等，比较值和类型)");
+            output.push("null == undefined: " + (null == undefined));
+            output.push("null === undefined: " + (null === undefined));
+
+            // 逻辑表达式
+            output.push("\n--- 逻辑表达式 ---");
+            output.push("true && false: " + (true && false));
+            output.push("true || false: " + (true || false));
+            output.push("!true: " + (!true));
+            output.push("0 || '默认值': " + (0 || '默认值')); // 短路求值
+            output.push("null ?? '默认值': " + (null ?? '默认值')); // 空值合并
+
+            // 赋值表达式
+            output.push("\n--- 赋值表达式 ---");
+            let x = 10;
+            x += 5; output.push("x += 5: " + x);
+            x -= 3; output.push("x -= 3: " + x);
+            x *= 2; output.push("x *= 2: " + x);
+
+            document.getElementById("exprOutput").textContent = output.join("\n");
+        }
+
+        // ========== 四、流程控制 ==========
+        function testIfElse() {
+            let score = parseInt(document.getElementById("scoreInput").value) || 0;
+            let result;
+
+            if (score >= 90) {
+                result = "成绩 " + score + " 分：优秀 🎉";
+            } else if (score >= 80) {
+                result = "成绩 " + score + " 分：良好 👍";
+            } else if (score >= 60) {
+                result = "成绩 " + score + " 分：及格 🙂";
+            } else {
+                result = "成绩 " + score + " 分：不及格，需要加油 💪";
+            }
+
+            document.getElementById("flowOutput").textContent = result;
+        }
+
+        function testSwitch() {
+            let day = parseInt(document.getElementById("dayInput").value) || 1;
+            let result;
+
+            switch (day) {
+                case 1:
+                    result = "今天是：星期一 🌟";
+                    break;
+                case 2:
+                    result = "今天是：星期二 🌟";
+                    break;
+                case 3:
+                    result = "今天是：星期三 🌟";
+                    break;
+                case 4:
+                    result = "今天是：星期四 🌟";
+                    break;
+                case 5:
+                    result = "今天是：星期五 🌟";
+                    break;
+                case 6:
+                    result = "今天是：星期六 🎉";
+                    break;
+                case 7:
+                    result = "今天是：星期日 🎉";
+                    break;
+                default:
+                    result = "输入错误：请输入 1-7 之间的数字";
+            }
+
+            document.getElementById("flowOutput").textContent = result;
+        }
+
+        function testLoop() {
+            let n = parseInt(document.getElementById("nInput").value) || 5;
+            let sum = 0;
+            let steps = [];
+
+            // for 循环
+            for (let i = 1; i <= n; i++) {
+                sum += i;
+                if (i < n) {
+                    steps.push(i);
+                } else {
+                    steps.push(i + " = " + sum);
+                }
+            }
+
+            // while 循环（反向）
+            let i = n;
+            let reverseSum = 0;
+            while (i > 0) {
+                reverseSum += i;
+                i--;
+            }
+
+            // do-while 循环
+            let doWhileSum = 0;
+            let j = 1;
+            do {
+                doWhileSum += j;
+                j++;
+            } while (j <= n);
+
+            document.getElementById("flowOutput").textContent =
+                "for 循环求和:\n1+2+...+" + n + " = " + sum + "\n\n" +
+                "步骤: " + steps.join("+") + "\n\n" +
+                "while 循环反向求和: " + n + "+...+2+1 = " + reverseSum + "\n\n" +
+                "do-while 求和: " + doWhileSum;
+        }
+
+        // ========== 五、函数 ==========
+        function testFunctions() {
+            let output = [];
+
+            // 1. 函数声明（可提升）
+            output.push("--- 函数声明 ---");
+            output.push("greetDeclaration(): " + greetDeclaration("小明"));
+
+            // 2. 函数表达式
+            output.push("\n--- 函数表达式 ---");
+            const greetExpression = function(name) {
+                return "你好，" + name + "！";
+            };
+            output.push("greetExpression('小红'): " + greetExpression("小红"));
+
+            // 3. 箭头函数
+            output.push("\n--- 箭头函数 ---");
+            const greetArrow = (name) => "你好，" + name + "！";
+            output.push("greetArrow('小华'): " + greetArrow("小华"));
+
+            // 4. 默认参数
+            const sayHello = (name = "访客", greeting = "你好") => {
+                return greeting + "，" + name + "！";
+            };
+            output.push("\n--- 默认参数 ---");
+            output.push("sayHello(): " + sayHello());
+            output.push("sayHello('小李'): " + sayHello("小李"));
+            output.push("sayHello('小张', '早上好'): " + sayHello("小张", "早上好"));
+
+            // 5. 递归函数 - 计算阶乘
+            function factorial(n) {
+                if (n <= 1) return 1;
+                return n * factorial(n - 1);
+            }
+            output.push("\n--- 递归函数 ---");
+            output.push("factorial(5) = " + factorial(5));
+
+            // 6. 高阶函数 - 接受函数作为参数
+            function applyOperation(a, b, operation) {
+                return operation(a, b);
+            }
+            const add = (x, y) => x + y;
+            const multiply = (x, y) => x * y;
+            output.push("\n--- 高阶函数 ---");
+            output.push("applyOperation(5, 3, add): " + applyOperation(5, 3, add));
+            output.push("applyOperation(5, 3, multiply): " + applyOperation(5, 3, multiply));
+
+            // 7. 闭包 - 计数器
+            output.push("\n--- 闭包 ---");
+            const createCounter = () => {
+                let count = 0;
+                return () => ++count;
+            };
+            const counter = createCounter();
+            output.push("counter(): " + counter());
+            output.push("counter(): " + counter());
+            output.push("counter(): " + counter());
+
+            document.getElementById("funcOutput").textContent = output.join("\n");
+        }
+
+        // ========== 初始化函数 ==========
+        function greetDeclaration(name) {
+            return "你好，" + name + "！";
+        }
+
+        // 页面加载时自动运行
+        window.onload = function() {
+            console.log("JavaScript 基础练习页面已加载！");
+        };
+    </script>
+</body>
+</html>
